@@ -29,12 +29,12 @@ myScreen.onkeypress(leftPaddle.up,"w")
 myScreen.onkeypress(leftPaddle.down,"s")
 
 # Scoreboard
-myScoreboard=Scoreboard()
+myScoreboard=Scoreboard(150,280)
 
 # Game logic
 gameOn=True
-yBound=370
-xBound=680
+yBound=screenHeight/2-30
+xBound=screenWidth/2-20
 paddleBound=70
 while gameOn:
     sleep(0.05)
@@ -42,7 +42,7 @@ while gameOn:
     myBall.move()
     if myBall.ycor()>yBound or myBall.ycor()<-1*yBound:
         myBall.bounceY()
-    if (myBall.distance(rightPaddle)<paddleBound and myBall.xcor()>620 and myBall.xcor()<650) or (myBall.distance(leftPaddle)<paddleBound and myBall.xcor()<-620 and myBall.xcor()>-650):
+    if (myBall.distance(rightPaddle)<paddleBound and myBall.xcor()>xBound-60 and myBall.xcor()<xBound-30) or (myBall.distance(leftPaddle)<paddleBound and myBall.xcor()<-(xBound-60) and myBall.xcor()>-(xBound-30)):
         myBall.bounceX()
     if (myBall.xcor()>xBound):
         myBall.resetPos()
