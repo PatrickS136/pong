@@ -10,15 +10,17 @@ myScreen=Screen()
 myScreen.bgcolor("black")
 myScreen.listen()
 myScreen.tracer(0)
-myScreen.setup(width=800, height=600)
+screenWidth=1400
+screenHeight=800
+myScreen.setup(width=screenWidth, height=screenHeight)
 myScreen.title("Pong")
 
 # Ball
 myBall=Ball()
 
 # Paddle
-rightPaddle=Paddle((350,0))
-leftPaddle=Paddle((-350,0))
+rightPaddle=Paddle((screenWidth/2-50,0))
+leftPaddle=Paddle((-(screenWidth/2-50),0))
 
 # Key presses
 myScreen.onkeypress(rightPaddle.up,"Up")
@@ -31,19 +33,22 @@ myScoreboard=Scoreboard()
 
 # Game logic
 gameOn=True
+yBound=370
+xBound=680
+paddleBound=70
 while gameOn:
     sleep(0.05)
     myScreen.update()
     myBall.move()
-    if myBall.ycor()>280 or myBall.ycor()<-280:
+    if myBall.ycor()>yBound or myBall.ycor()<-1*yBound:
         myBall.bounceY()
-    if (myBall.distance(rightPaddle)<50 and myBall.xcor()>320 and myBall.xcor()<350) or (myBall.distance(leftPaddle)<50 and myBall.xcor()<-320 and myBall.xcor()>-350):
+    if (myBall.distance(rightPaddle)<paddleBound and myBall.xcor()>620 and myBall.xcor()<650) or (myBall.distance(leftPaddle)<paddleBound and myBall.xcor()<-620 and myBall.xcor()>-650):
         myBall.bounceX()
-    if (myBall.xcor()>380):
+    if (myBall.xcor()>xBound):
         myBall.resetPos()
         myScoreboard.lPoint()
         myBall.resetSpeed()
-    if (myBall.xcor()<-380):
+    if (myBall.xcor()<-1*xBound):
         myBall.resetPos()
         myScoreboard.rPoint()
         myBall.resetSpeed()

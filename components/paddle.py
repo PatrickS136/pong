@@ -13,12 +13,13 @@ class Paddle(Turtle):
         self.goto(coordinates)
         self.resizemode("user")
         self.shapesize(stretch_len=4)
+        self.speed=30
 
     def up(self):
-        if self.ycor()<250:
-            self.forward(20)
+        if self.ycor()<350:
+            self.forward(self.speed)
             
     def down(self):
-        if self.ycor()>-250:
-            self.forward(-20)
+        if self.ycor()>-350:
+            self.forward(-1*self.speed)
     
