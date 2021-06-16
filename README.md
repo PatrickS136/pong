@@ -2,5 +2,5 @@
 
 Run with "python main.py"
 
-Left side controlled with W, S
-Right side controlled with ⬆, ⬇
+<p>Left side controlled with W, S</p>
+<p>Right side controlled with ⬆, ⬇</p>
